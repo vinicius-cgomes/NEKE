@@ -39,6 +39,7 @@ function sysCall_init()
     v1 = 0
     v2 = 0
 
+    --Parametros da curva de Hirose
     a = pi/10
     c  = 0
     k = 2
@@ -47,7 +48,7 @@ function sysCall_init()
 
 
 
-    
+    --reconhecer as juntas pitch e yaw do robô
     for i=1,M1 ,1 do
         joints_yaw[i]=sim.getObject('./yaw',{index=i-1})
         joints_pitch[i]=sim.getObject('./pitch',{index=i-1})
@@ -55,12 +56,12 @@ function sysCall_init()
 end
 
 function sysCall_actuation()
-    if x < 700 then
-        pitchpitchWLifted(stat)
+    if x < 700 then --700 repeticoes, ou seja, 7 ciclos completos da curva de hirose (passo = 100)
+        pitchpitchWLifted(stat) --a variavel stat representa a junta que esta com acionada em 90 graus
     else
         if phi2 < math.pi/2 then
-            adjustLiftedAngles(stat)
-            --pitchpitchWLiftedTransition(stat)
+            adjustLiftedAngles(stat) --apos 7 ciclos ajusta as juntas da seguinte forma: stat passa de -pi/2 para 0; stat+1 passa de pi/2 para -pi/2; stat+2 passa de 0 para pi/2
+            --pitchpitchWLiftedTransition(stat) --continua o movimento pitchpitch enquanto os angulos sao ajustados
         else
             phi2 = 0
             x = 1
@@ -72,6 +73,7 @@ function sysCall_actuation()
     x = x + 1
 end
 
+--funcoes antigas---------------------------
 function yawyaw ()
     for k = 1, M1 ,1 do
         v = 2*alphah*math.sin(pi*khline/(Mline/2))*math.sin(phi+((2*pi*kvline/(Mline/2))*((k)+(d0/d))))
@@ -120,7 +122,9 @@ function pitchpitchWLiftedDeprecated(liftedJoint)
         end
     end
 end
+--fim funcoes antigas -------------------------------
 
+--mantem as justas levantadas e cria a curva de hirose de acordo com o numero de modulos como dois robos, antes e depois
 function pitchpitchWLifted(liftedJoint)
     Manterior = M1 - liftedJoint - 1
     Mposterior = liftedJoint - 1
@@ -128,7 +132,7 @@ function pitchpitchWLifted(liftedJoint)
         for k = liftedJoint+2, M1 ,1 do
             v = -2*a*math.sin(b/(2*Manterior))*math.sin((phi)+(k*b/Manterior)) -c/Manterior
             sim.setJointTargetPosition(joints_pitch[k], v)
-            if k == liftedJoint+2 and liftedJoint > 0 then
+            if k == liftedJoint+2 and liftedJoint > 0 then --ajusta angulo para manter pi/2 em relacao ao degrau
                 sim.setJointTargetPosition(joints_pitch[k-1], math.pi/2 - v/2)
             end
             print(phi)
@@ -140,7 +144,7 @@ function pitchpitchWLifted(liftedJoint)
             sim.setJointTargetPosition(joints_pitch[k], v)
         end
     end
-    phi = phi + pi/passo
+    phi = phi + pi/passo --passo para ciclo completo da curva de hirose
 end
 
 function pitchpitchWLiftedTransition(liftedJoint)
@@ -157,6 +161,7 @@ function pitchpitchWLiftedTransition(liftedJoint)
     end
 end
 
+--ajusta juntas dos modulos levantados, em 360 passos, atuar os motores diretamente causa instabilidade
 function adjustLiftedAngles(liftedJoint)
     v = phi2
     if liftedJoint+2 > 0 then
