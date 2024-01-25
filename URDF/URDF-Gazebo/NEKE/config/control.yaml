@@ -1,0 +1,94 @@
+NEKE:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  yaw1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw1
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch1
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  yaw2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw2
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch2
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  yaw3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw3
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch3
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  yaw4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw4
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch4
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  yaw5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw5
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch5
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  yaw6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw6
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch6
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  yaw7_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw7
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch7_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch7
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  yaw8_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw8
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch8_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch8
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  yaw9_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: yaw9
+    pid: {p: 0.1, i: 0.0, d: 0.0}
+
+  pitch9_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: pitch9
+    pid: {p: 0.1, i: 0.0, d: 0.0}

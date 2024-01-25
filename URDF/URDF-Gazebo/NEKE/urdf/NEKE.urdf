@@ -1,0 +1,1434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<!-- 
+  Modificações foram feitas nessa descrição a fim de simular o robô no ambiente de simulação Gazebo
+  Autor: Vinícius Carvalho Gomes
+  email: viniciuscgomes.98@gmail.com
+-->
+<robot
+  name="NEKE">
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/NEKE</robotNamespace>
+    </plugin>
+  </gazebo>
+  <link name = "dummy"/>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-1.2976 0.11003 0.0092789"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-6.294E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>  
+  </gazebo>
+  <joint name = "dummy_joint" type = "fixed">
+    <parent link="dummy"/>
+    <child link="base_link"/>
+  </joint>
+  <link
+    name="barra1">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.7213E-22"
+        ixz="-2.5526E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw1"
+    type="revolute">
+    <origin
+      xyz="-1.241 -0.0064187 0.10789"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="barra1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="10.0"
+      velocity="0.5" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo2">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-6.7483E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo2">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <joint
+    name="pitch1"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra1" />
+    <child
+      link="modulo2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="barra2">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.7213E-22"
+        ixz="-2.5526E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw2"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo2" />
+    <child
+      link="barra2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo3">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-2.2502E-22"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo3">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>  
+  </gazebo>
+  <joint
+    name="pitch2"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra2" />
+    <child
+      link="modulo3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="barra3">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.7213E-22"
+        ixz="-2.5849E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw3"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo3" />
+    <child
+      link="barra3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo4">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-7.0418E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo4">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <joint
+    name="pitch3"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra3" />
+    <child
+      link="modulo4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="barra4">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.7226E-22"
+        ixz="-2.5526E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw4"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo4" />
+    <child
+      link="barra4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo5">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-6.5131E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo5">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <joint
+    name="pitch4"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra4" />
+    <child
+      link="modulo5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="barra5">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.0048E-22"
+        ixz="-5.3314E-23"
+        iyy="3.6754E-06"
+        iyz="-5.8588E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw5"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo5" />
+    <child
+      link="barra5" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo6">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-8.2183E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo6">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <joint
+    name="pitch5"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra5" />
+    <child
+      link="modulo6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="barra6">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.3382E-22"
+        ixz="-1.2246E-22"
+        iyy="3.6754E-06"
+        iyz="2.9644E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw6"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo6" />
+    <child
+      link="barra6" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo7">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-1.1904E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo7">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <joint
+    name="pitch6"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra6" />
+    <child
+      link="modulo7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="barra7">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.4014E-22"
+        ixz="-5.7838E-23"
+        iyy="3.6754E-06"
+        iyz="-4.9553E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw7"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo7" />
+    <child
+      link="barra7" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo8">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-2.8062E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo8">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <joint
+    name="pitch7"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra7" />
+    <child
+      link="modulo8" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="barra8">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="6.6E-23"
+        ixz="1.7287E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw8"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo8" />
+    <child
+      link="barra8" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw8">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw8">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo9">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="1.187E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo9.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo9.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo9">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <joint
+    name="pitch8"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra8" />
+    <child
+      link="modulo9" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch8">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch8">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="barra9">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.4014E-22"
+        ixz="-5.8161E-23"
+        iyy="3.6754E-06"
+        iyz="-4.9553E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra9.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra9.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw9"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo9" />
+    <child
+      link="barra9" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transyaw9">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="yaw9">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motoryaw9">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link
+    name="modulo10">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-7.919E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo10.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo10.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="modulo10">
+    <mu1>0.0</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <joint
+    name="pitch9"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra9" />
+    <child
+      link="modulo10" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.0"
+      upper="2.0"
+      effort="100000000000.0"
+      velocity="6.28" />
+    <physics>
+      <ode cfm_damping = "true">
+        <limit cfm = "1.0"/>
+        <suspension cfm="1.0"/>
+      </ode>
+    </physics>
+  </joint>
+  <transmission name="transpitch9">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pitch9">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motorpitch9">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>

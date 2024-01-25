@@ -1,0 +1,10 @@
+<launch>
+  <param name="robot_description" command="cat $(find NEKE)/urdf/NEKE.urdf"/>
+  <rosparam file="$(find NEKE)/config/control.yaml" command="load"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/NEKE" args="yaw1_position_controller pitch1_position_controller yaw2_position_controller pitch2_position_controller yaw3_position_controller pitch3_position_controller yaw4_position_controller pitch4_position_controller yaw5_position_controller pitch5_position_controller yaw6_position_controller pitch6_position_controller yaw7_position_controller pitch7_position_controller yaw8_position_controller pitch8_position_controller yaw9_position_controller pitch9_position_controller joint_state_controller" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+    <remap from="/joint_states" to="/NEKE/joint_states" />
+  </node>
+</launch>

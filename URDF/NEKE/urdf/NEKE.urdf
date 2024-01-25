@@ -1,0 +1,1091 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="NEKE">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-1.2976 0.11003 0.0092789"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-6.294E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="barra1">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.7213E-22"
+        ixz="-2.5526E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw1"
+    type="revolute">
+    <origin
+      xyz="-1.241 -0.0064187 0.10789"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="barra1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo2">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-6.7483E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch1"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra1" />
+    <child
+      link="modulo2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra2">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.7213E-22"
+        ixz="-2.5526E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw2"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo2" />
+    <child
+      link="barra2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo3">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-2.2502E-22"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch2"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra2" />
+    <child
+      link="modulo3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra3">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.7213E-22"
+        ixz="-2.5849E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw3"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo3" />
+    <child
+      link="barra3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo4">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-7.0418E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch3"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra3" />
+    <child
+      link="modulo4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra4">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.7226E-22"
+        ixz="-2.5526E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw4"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo4" />
+    <child
+      link="barra4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo5">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-6.5131E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch4"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra4" />
+    <child
+      link="modulo5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra5">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.0048E-22"
+        ixz="-5.3314E-23"
+        iyy="3.6754E-06"
+        iyz="-5.8588E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw5"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo5" />
+    <child
+      link="barra5" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo6">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-8.2183E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch5"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra5" />
+    <child
+      link="modulo6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra6">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.3382E-22"
+        ixz="-1.2246E-22"
+        iyy="3.6754E-06"
+        iyz="2.9644E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw6"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo6" />
+    <child
+      link="barra6" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo7">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-1.1904E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch6"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra6" />
+    <child
+      link="modulo7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra7">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.4014E-22"
+        ixz="-5.7838E-23"
+        iyy="3.6754E-06"
+        iyz="-4.9553E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw7"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo7" />
+    <child
+      link="barra7" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo8">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-2.8062E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch7"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra7" />
+    <child
+      link="modulo8" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra8">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.6736E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="6.6E-23"
+        ixz="1.7287E-23"
+        iyy="3.6754E-06"
+        iyz="-2.3507E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw8"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo8" />
+    <child
+      link="barra8" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo9">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="1.187E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo9.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo9.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch8"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra8" />
+    <child
+      link="modulo9" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra9">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0074345" />
+      <inertia
+        ixx="1.2735E-07"
+        ixy="1.4014E-22"
+        ixz="-5.8161E-23"
+        iyy="3.6754E-06"
+        iyz="-4.9553E-24"
+        izz="3.6754E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra9.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/barra9.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw9"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo9" />
+    <child
+      link="barra9" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo10">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.0028602 -0.0021398"
+        rpy="0 0 0" />
+      <mass
+        value="0.3852" />
+      <inertia
+        ixx="0.00028326"
+        ixy="2.106E-05"
+        ixz="2.106E-05"
+        iyy="0.00026846"
+        iyz="-7.919E-21"
+        izz="0.00026846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo10.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKE/meshes/modulo10.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch9"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra9" />
+    <child
+      link="modulo10" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
