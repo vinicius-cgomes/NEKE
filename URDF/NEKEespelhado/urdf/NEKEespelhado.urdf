@@ -1,0 +1,1091 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="NEKEespelhado">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.024 -0.00477264007478968 0.00286022630648331"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="2.10601156242849E-05"
+        ixz="-2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="6.8736177728217E-21"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="barra1">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.67361737988404E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235384" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="-4.79075438103629E-24"
+        ixz="-2.22951024477183E-23"
+        iyy="3.67536602194712E-06"
+        iyz="-3.50812812321156E-24"
+        izz="3.67536602194712E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw1"
+    type="revolute">
+    <origin
+      xyz="0.08065 -0.0076329 -0.005"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="barra1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo2">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.00286022630648332 0.00786022630648332"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="2.1060115624285E-05"
+        ixz="2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="-1.90014782821109E-21"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch1"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra1" />
+    <child
+      link="modulo2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra2">
+    <inertial>
+      <origin
+        xyz="0.034 -0.005 -8.67361737988404E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235383" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="1.03294178992559E-22"
+        ixz="-8.77263813703699E-23"
+        iyy="3.67536602194712E-06"
+        iyz="8.82325986723229E-24"
+        izz="3.67536602194712E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw2"
+    type="revolute">
+    <origin
+      xyz="0.1133 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo2" />
+    <child
+      link="barra2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo3">
+    <inertial>
+      <origin
+        xyz="0.05665 0.00286022630648331 -0.00786022630648332"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="-2.1060115624285E-05"
+        ixz="-2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="-1.0998271741934E-20"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch2"
+    type="revolute">
+    <origin
+      xyz="0.068 -0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra2" />
+    <child
+      link="modulo3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra3">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 -8.67361737988404E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235383" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="1.03294178992559E-22"
+        ixz="-8.80494987971485E-23"
+        iyy="3.67536602194712E-06"
+        iyz="8.82325986723229E-24"
+        izz="3.67536602194712E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw3"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo3" />
+    <child
+      link="barra3" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo4">
+    <inertial>
+      <origin
+        xyz="0.0566500000000001 -0.00286022630648331 0.00786022630648332"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="2.10601156242849E-05"
+        ixz="2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="4.56198332687296E-21"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch3"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra3" />
+    <child
+      link="modulo4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra4">
+    <inertial>
+      <origin
+        xyz="0.034 -0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235385" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="-6.46234853557053E-24"
+        ixz="-2.55262767155036E-23"
+        iyy="3.67536602194713E-06"
+        iyz="-5.31513174402073E-24"
+        izz="3.67536602194713E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw4"
+    type="revolute">
+    <origin
+      xyz="0.1133 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo4" />
+    <child
+      link="barra4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo5">
+    <inertial>
+      <origin
+        xyz="0.05665 0.00286022630648331 -0.00786022630648332"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="-2.10601156242851E-05"
+        ixz="-2.10601156242849E-05"
+        iyy="0.000268459177416828"
+        iyz="-8.65454965661702E-21"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch4"
+    type="revolute">
+    <origin
+      xyz="0.068 -0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra4" />
+    <child
+      link="modulo5" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra5">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235385" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="-6.46234853557053E-24"
+        ixz="-2.58493941422821E-23"
+        iyy="3.67536602194713E-06"
+        iyz="-5.31513174402073E-24"
+        izz="3.67536602194713E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw5"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo5" />
+    <child
+      link="barra5" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo6">
+    <inertial>
+      <origin
+        xyz="0.05665 -0.00286022630648331 0.00786022630648332"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="2.10601156242849E-05"
+        ixz="2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="-2.41678365154725E-21"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch5"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra5" />
+    <child
+      link="modulo6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra6">
+    <inertial>
+      <origin
+        xyz="0.034 -0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235385" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="-6.46234853557053E-24"
+        ixz="-2.58493941422821E-23"
+        iyy="3.67536602194713E-06"
+        iyz="-5.31513174402073E-24"
+        izz="3.67536602194713E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw6"
+    type="revolute">
+    <origin
+      xyz="0.1133 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo6" />
+    <child
+      link="barra6" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo7">
+    <inertial>
+      <origin
+        xyz="0.0566500000000001 0.00286022630648331 -0.00786022630648332"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="-2.10601156242851E-05"
+        ixz="-2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="-2.43659556103781E-21"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch6"
+    type="revolute">
+    <origin
+      xyz="0.068 -0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra6" />
+    <child
+      link="modulo7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra7">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235385" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="-6.46234853557053E-24"
+        ixz="-2.55262767155036E-23"
+        iyy="3.67536602194713E-06"
+        iyz="-5.31513174402073E-24"
+        izz="3.67536602194713E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw7"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo7" />
+    <child
+      link="barra7" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo8">
+    <inertial>
+      <origin
+        xyz="0.0566499999999999 -0.00286022630648332 0.00786022630648332"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="2.1060115624285E-05"
+        ixz="2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="-8.38455983358071E-21"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch7"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra7" />
+    <child
+      link="modulo8" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra8">
+    <inertial>
+      <origin
+        xyz="0.034 -0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235384" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="-6.46234853557053E-24"
+        ixz="-2.58493941422821E-23"
+        iyy="3.67536602194713E-06"
+        iyz="-5.31513174402073E-24"
+        izz="3.67536602194713E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw8"
+    type="revolute">
+    <origin
+      xyz="0.1133 0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo8" />
+    <child
+      link="barra8" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo9">
+    <inertial>
+      <origin
+        xyz="0.0566499999999999 0.00286022630648331 -0.00786022630648333"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="-2.10601156242851E-05"
+        ixz="-2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="-1.05900951581111E-20"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo9.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo9.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch8"
+    type="revolute">
+    <origin
+      xyz="0.068 -0.005 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra8" />
+    <child
+      link="modulo9" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="barra9">
+    <inertial>
+      <origin
+        xyz="0.034 0.005 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00743451332235385" />
+      <inertia
+        ixx="1.27348599328245E-07"
+        ixy="-6.46234853557053E-24"
+        ixz="-2.55262767155036E-23"
+        iyy="3.67536602194713E-06"
+        iyz="-5.31513174402073E-24"
+        izz="3.67536602194713E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra9.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/barra9.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw9"
+    type="revolute">
+    <origin
+      xyz="0.1133 -0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="modulo9" />
+    <child
+      link="barra9" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="modulo10">
+    <inertial>
+      <origin
+        xyz="0.0566499999999999 -0.00286022630648332 0.00786022630648332"
+        rpy="0 0 0" />
+      <mass
+        value="0.385204158177987" />
+      <inertia
+        ixx="0.000283262951837511"
+        ixy="2.1060115624285E-05"
+        ixz="2.1060115624285E-05"
+        iyy="0.000268459177416828"
+        iyz="-8.28851674694461E-21"
+        izz="0.000268459177416828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo10.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://NEKEespelhado/meshes/modulo10.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch9"
+    type="revolute">
+    <origin
+      xyz="0.068 0.005 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="barra9" />
+    <child
+      link="modulo10" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
