@@ -4,15 +4,17 @@ function sysCall_init()
     joints_yaw={-1,-1,-1,-1} --vetor de juntas yaw
     joints_pitch={-1,-1,-1,-1} --vetor de juntas pitch
     M1 = 9 --numero de juntas no mesmo plano
-    Manterior = 0 --numero de juntas no chão
+    Mid = 7 --junta do meio
+    Manterior = M1 --numero de juntas no chão
     Mposterior = 0 --numero de juntas em cima do degrau 
     loopVariable = 1 --variavel de controle
-    stat = -1 --controle da junta a ser levantada
-    passo=100 --passos para um ciclo completo da curva de hirose
-    ciclos = 5
+    stat = 0 --controle da junta a ser levantada
+    ppyy = 0 --alterna movimento entre pitch e yaw
+    passo=360 --passos para um ciclo completo
     phi=0
     phi2 = 0
     v = 0
+    flag = 3
 
     --Parametros da curva de Hirose
     a = 15*(math.pi/180)
@@ -21,7 +23,7 @@ function sysCall_init()
     b = 2*math.pi*k
 
     --altura do degrau
-    H = 85+10 --altura do degrau em mm (adiciona 10 mm a altura para que o modulo nao fique preso na quina do degrau)
+    H = 181 --altura do degrau em mm
     D0 = 181 --altura do modulo em mm
     alpha = math.asin(H/D0)
 
@@ -37,28 +39,44 @@ function sysCall_init()
 end
 
 function sysCall_actuation()
-    if loopVariable < ciclos*passo or stat > 9 then --700 repeticoes, ou seja, 7 ciclos completos da curva de hirose (passo = 100)
-        pitchpitchWLifted(stat) --a variavel stat representa a junta que esta com acionada em 90 graus
-    elseif loopVariable == ciclos*passo then
-        layDown(stat)
-    else
+    if stat == 0 then
+        if phi > -math.pi/2 then
+            createBase()
+        else
+            phi = 0
+            stat = stat + 1
+        end
+    elseif ppyy == 0 and flag > 2 then
         if phi2 < alpha then
-            adjustLiftedAngles(stat) --apos 7 ciclos ajusta as juntas da seguinte forma: stat passa de -pi/2 para 0; stat+1 passa de pi/2 para -pi/2; stat+2 passa de 0 para pi/2
-            if stat > M1-3 then
-                pitchpitchWLiftedTransition(stat) --continua o movimento pitchpitch enquanto os angulos sao ajustados
-            end
+            adjustLiftedAngles(stat)
         else
             phi2 = 0
-            loopVariable = 1
+            ppyy = 1
+        end
+    elseif ppyy == 1 and flag > 2 then
+        if phi2 < math.pi/2 then
+            adjustYawAngles(stat-1)
+        else
+            phi2 = 0
+            ppyy = 0
             stat = stat + 1
-            if stat < 6 then
-                ciclos = ciclos + 1
-            else
-                ciclos = ciclos-1
-            end
         end
     end
-    loopVariable = loopVariable + 1
+    if stat == Mid and (flag == 3 or flag == 1) then
+        if phi < math.pi/2 then
+            alteraBase()
+            flag = 1
+        else
+            phi = 0
+            flag = 4
+        end
+    end
+    if stat > M1+3 then
+        for k=1, M1, 1 do
+            sim.setJointTargetPosition(joints_pitch[k],0)
+            sim.setJointTargetPosition(joints_yaw[k],0)
+        end
+    end
 end
 
 
@@ -111,22 +129,7 @@ function layDown(liftedJoint)
     end
 end
 
---ajusta juntas dos modulos levantados, em 360 passos, atuar os motores diretamente causa instabilidade
-function adjustLiftedAngles(liftedJoint)
-    v = phi2
-    if liftedJoint+2 > 0 and liftedJoint+2 < 10 then
-        sim.setJointTargetPosition(joints_pitch[liftedJoint+2],v)
-    end
-    v = -alpha + phi2
-    if liftedJoint > 0  and liftedJoint < 10 then
-        sim.setJointTargetPosition(joints_pitch[liftedJoint],v)
-    end
-    v = alpha - 2*phi2
-    if liftedJoint+1 > 0 and liftedJoint+1 < 10 then
-        sim.setJointTargetPosition(joints_pitch[liftedJoint+1],v)
-    end
-    phi2 = phi2 + math.pi/360   
-end
+
 
 
 function hangingModule(liftedJoint)
@@ -137,6 +140,55 @@ function hangingModule(liftedJoint)
     phi2 = phi2 + math.pi/360   
 end
 
+------------------------------------funcoes pitchyaw---------
+
+function createBase()
+    sim.setJointTargetPosition(joints_yaw[M1], phi)
+    sim.setJointTargetPosition(joints_yaw[M1-1], phi)
+    phi = phi - math.pi/passo
+end
+
+function alteraBase()
+    v = phi - math.pi/2
+    sim.setJointTargetPosition(joints_yaw[M1], v)
+    sim.setJointTargetPosition(joints_yaw[M1-1], v)
+    sim.setJointTargetPosition(joints_yaw[3], phi)
+    sim.setJointTargetPosition(joints_yaw[1], phi)
+    phi = phi + math.pi/passo
+end
+
+--ajusta juntas dos modulos levantados, em 360 passos, atuar os motores diretamente causa instabilidade
+function adjustLiftedAngles(liftedJoint)
+    v = phi2
+    if liftedJoint > 0 and liftedJoint < 10 then
+        sim.setJointTargetPosition(joints_pitch[liftedJoint],v)
+    end
+    v = -alpha + phi2
+    if liftedJoint-2 > 0  and liftedJoint-2 < 10 then
+        sim.setJointTargetPosition(joints_pitch[liftedJoint-2],v)
+    end
+    v = alpha - 2*phi2
+    if liftedJoint-1 > 0 and liftedJoint-1 < 10 then
+        sim.setJointTargetPosition(joints_pitch[liftedJoint-1],v)
+    end
+    phi2 = phi2 + math.pi/360   
+end
+
+function adjustYawAngles(liftedJoint)
+    v = phi2
+    if liftedJoint > 0 and liftedJoint < 10 then
+        sim.setJointTargetPosition(joints_yaw[liftedJoint],v)
+    end
+    v = -math.pi/2 + phi2
+    if liftedJoint-2 > 0  and liftedJoint-2 < 10 then
+        sim.setJointTargetPosition(joints_yaw[liftedJoint-2],v)
+    end
+    v = math.pi/2 - 2*phi2
+    if liftedJoint-1 > 0 and liftedJoint-1 < 10 then
+        sim.setJointTargetPosition(joints_yaw[liftedJoint-1],v)
+    end
+    phi2 = phi2 + math.pi/360 
+end
 
     
     
